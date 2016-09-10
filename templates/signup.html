@@ -3,43 +3,37 @@
     <html>
         <head>
             <title>User Signup</title>
-            <style type="text/css">.label {text-align: right} .error {color: red}</style>
+            <style type="text/css">
+              .label {
+                text-align: auto;}
+
+              .error {
+                color: red}
+
+              body {
+                font-family: sans-serif;
+                width:800px;
+                margin: 0 auto;
+                padding 10px;
+                background-color: #e5e7e9;
+                }
+            </style>
         </head>
-        <body> = $0
+        <body>
           <h2>Sign up here for absolutely nothing!</h2>
               <form method = "post">
-                <table>
-                  <tbody>
-                    <tr>
-                      <td class="label">Username</td>
-                      <td>
-                        <input type = "text" name= "username" value ="{{username}}">
-                      </td>
-                      <td class="error"> {{error_username}} </td>
-                    </tr>
-                    <tr>
-                      <td class="label">Password</td>
-                      <td>
-                        <input type = "password" name= "password" value>
-                      </td>
-                      <td class="error"> {{error_password}} </td>
-                    </tr>
-                    <tr>
-                      <td class="label">Confirm Password</td>
-                      <td>
-                        <input type = "password" name= "verify" value>
-                      </td>
-                      <td class="error"> {{error_verify}} </td>
-                    </tr>
-                    <tr>
-                      <td class="label">Email</td>
-                      <td>
-                        <input type = "text" name= "email" value = "{{email}}">
-                      </td>
-                      <td class="error"> {{error_email}} </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="label">Username</div>
+                  <input type = "text" name= "username" value ="{{username}}">
+                <div class="error"> {{error_username}} </div>
+                <div class="label">Password</div>
+                  <input type = "password" name= "password" value>
+                <div class="error"> {{error_password}} </div>
+                <div class="label">Confirm Password</div>
+                  <input type = "password" name= "confirm" value>
+                <div class="error"> {{error_confirm}} </div>
+                <div class="label">Email<div>
+                  <input type = "text" name= "email" value = "{{email}}">
+                <div class="error"> {{error_email}} </div>
                 <input type = "submit">
               </form>
           </body>

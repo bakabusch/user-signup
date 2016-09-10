@@ -16,13 +16,15 @@
 import re
 import os
 import cgi
+from string import letters
 import webapp2
 import jinja2
+from google.appengine.ext import db
 
 template_dir = os.path.join(os.path.dirname(__file__), "templates") #___file___ uses most current file
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape = True)
 
-def render_str(self, template, **params):
+def render_str(template, **params):
     t = jinja_env.get_template(template)
     return t.render(params)
 
@@ -46,7 +48,7 @@ def valid_pw(password):
 
 EMAIL_RE = re.compile(r'^[\S]+@[\S]+.[\S]+$')
 def valid_email(email):
-    return email and EMAIL_RE.match(email)
+    return not email or EMAIL_RE.match(email)
 
 
 
@@ -56,14 +58,14 @@ class MainHandler(Handler):
     #def write_form(self, error="", username="", email=""):
     #    self.response.write("sign-up.html", error = error, username = username, email = email)
 
-    def get(self, error="", username="", email=""):
+    def get(self):
         self.render("signup.html")
 
     def post(self):
         hasError = False
         username = self.request.get('username')
         password = self.request.get('password')
-        verify = self.request.get('verify')
+        confirm = self.request.get('confirm')
         email = self.request.get('email')
 
         params = dict(username= username, email = email)
@@ -81,8 +83,8 @@ class MainHandler(Handler):
             params['error_password'] = "Try again friend - that wasn't a valid password."
             hasError= True
 
-        elif password != confirm_password:
-            params['error_verify'] = "Try again friend - your passwords didn't match"
+        if password != confirm:
+            params['error_confirm'] = "Try again friend - your passwords didn't match"
             hasError= True
 
         if not valid_email(email):

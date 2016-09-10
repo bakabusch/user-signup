@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>User Signup</title>
+            <style type="text/css">
+              .label {
+                text-align: right}
+
+              .error {
+                color: red}
+
+              body {
+                font-family: sans-serif;
+                width:800px;
+                margin: 0 auto;
+                padding 10px;
+                background-color: #e5e7e9;
+                }
+            </style>
+        </head>
+        <body>
+          <h2>Sign up here for absolutely nothing!</h2>
+              <form method = "post">
+                <table>
+                  <tbody>
+                    <tr>
+                      <div class="label">Username</div>
+                      <td>
+                        <input type = "text" name= "username" value ="{{username}}">
+                      </td>
+                      <div class="error"> {{error_username}} </div>
+                    </tr>
+                    <tr>
+                      <div class="label">Password</div>
+                      <td>
+                        <input type = "password" name= "password" value>
+                      </td>
+                      <div class="error"> {{error_password}} </div>
+                    </tr>
+                    <tr>
+                      <div class="label">Confirm Password</div>
+                      <td>
+                        <input type = "password" name= "confirm" value>
+                      </td>
+                      <div class="error"> {{error_confirm}} </div>
+                    </tr>
+                    <tr>
+                      <div class="label">Email<div>
+                      <td>
+                        <input type = "text" name= "email" value = "{{email}}">
+                      </td>
+                      <div class="error"> {{error_email}} </div>
+                    </tr>
+                  </tbody>
+                </table>
+                <input type = "submit">
+              </form>
+          </body>
+    </html>
